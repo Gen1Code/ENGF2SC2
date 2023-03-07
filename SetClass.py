@@ -17,7 +17,7 @@ class Set:
         else:
             print("Not implemented")
         self.dic = {
-            {"Union": "|",
+            "Union": "|",
             "And": "&",
             "-": "self.Universe -",
             " ": "",
