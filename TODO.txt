@@ -1,0 +1,16 @@
+Front End
+Home Page
+Question Templates (Both types see pdf)
+Input Box with symbols
+Language Selection Header
+
+Back End
+Read in File with Questions (QID,Description,Answer,Difficulty,{Hint})
+Set Operations Functions
+Language JSON Files
+Regex Equation Check
+Balanced Paranthesis Check
+
+
+
+Image Creation of 2/3 venn diagram (matplotlib or svg)
