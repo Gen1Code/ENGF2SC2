@@ -4,8 +4,6 @@ from .models import Questions
 from .forms import QuestionForm
 from django.shortcuts import render
 
-
-
 def homePage(request):
   template = loader.get_template('homepage.html')
   return HttpResponse(template.render())

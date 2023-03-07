@@ -13,18 +13,3 @@ class Questions(models.Model):
     Difficulty = models.CharField(max_length=16)
 
     objects = QuestionsManager()
-
-
-def checkAnswer(Question,Answer):
-    with open("questions.txt","r") as f:
-        for line in f:
-            question = line.split(",")
-            if question[0] == Question:
-                return question[1] == Answer
-
-    print("Invalid Question")
-    raise KeyError
-
-def addQuestion(Question,Answer,Difficulty):
-    with open("questions.txt","a") as f:
-        f.write(Question+","+Answer+","+Difficulty)
