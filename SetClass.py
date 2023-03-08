@@ -19,6 +19,7 @@ class Set:
         self.dic = {
             "Union": "|",
             "And": "&",
+            " ^ ": "^",
             "-": "self.Universe -",
             " ": "",
             "/": "-",
@@ -47,6 +48,8 @@ class TestSet(unittest.TestCase):
         self.assertEqual(S.evaluate("A And B "),{"AB", "ABC"})
         self.assertEqual(S.evaluate("A/B "),{"A", "AC"})
         self.assertEqual(S.evaluate("A/B And C "),{"AC"})
+        self.assertEqual(S.evaluate("A ^ B "),{"A", "B", "AC", "BC"})
+        self.assertEqual(S.evaluate("A ^ B ^ C "),{"A", "B", "C", "ABC"})
 
     def test_set2(self):
         S = Set(2)
@@ -54,3 +57,4 @@ class TestSet(unittest.TestCase):
         self.assertEqual(S.evaluate("A And B "),{"AB"})
         self.assertEqual(S.evaluate("A/B "),{"A"})
         self.assertEqual(S.evaluate("A/B "),{"A"})
+        self.assertEqual(S.evaluate("A ^ B "),{"A", "B"})
