@@ -12,6 +12,7 @@ def createQuestionPage(request):
   if request.method == 'POST':
     form = QuestionForm(request.POST)
     if form.is_valid():
+      #Change Answer from equation into list of regions
       question = Questions(
         Question=form.cleaned_data["Question"],
         Answer=form.cleaned_data["Answer"],
@@ -28,7 +29,6 @@ def questionPage(request):
   template = loader.get_template('questionpage.html')
   context = {
     'Question': question.Question,
-    'Answer': question.Answer,
     'Difficulty': question.Difficulty,
     'form': AnswerForm()
   }
@@ -39,8 +39,11 @@ def checkQuestionPage(request):
     form = AnswerForm(request.POST)
     if form.is_valid():
       Answer = form.cleaned_data["Answer"]
-      #check if correct
-      #branch to different parts
+      #Regex Check
+      #balanced Paranthesis Check
+      #Turn equation into List of Regions
+      #Check Database if Answer is the same (Answer is stored as a list of regions in database)
+      #branch to different parts depending if correct or not
       #Make redirects
       return HttpResponseRedirect('/')
   else:

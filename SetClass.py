@@ -2,7 +2,6 @@ import random
 import unittest
 import re
 
-
 class Set:
 
     def __init__(self, size):
@@ -11,7 +10,7 @@ class Set:
             self.A = {"A", "AB"}
             self.B = {"B", "AB"}
             self.C = {}
-            self.Universe = self.A & self.B
+            self.Universe = self.A | self.B
         elif size == 3:
             self.size = 3
             self.A = {"A", "AB", "ABC", "AC"}
