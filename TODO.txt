@@ -5,12 +5,12 @@ Input Box with symbols
 Language Selection Header
 
 Back End
-Read in File with Questions (QID,Description,Answer,Difficulty,{Hint})
-Set Operations Functions
-Language JSON Files
-Regex Equation Check
-Balanced Paranthesis Check
+Read in Questions (Question,Answer,Difficulty,{Hint}) DONE
+Set Operations Functions 
+Language JSON Files 
+Regex Equation Check 
+Balanced Paranthesis Check 
 
 
 
-Image Creation of 2/3 venn diagram (matplotlib or svg)
+Image Creation of 2/3 venn diagram (svg)

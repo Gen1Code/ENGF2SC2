@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import Questions
-from .forms import QuestionForm
+from .forms import QuestionForm, AnswerForm
 from django.shortcuts import render
 
 def homePage(request):
@@ -29,7 +29,20 @@ def questionPage(request):
   context = {
     'Question': question.Question,
     'Answer': question.Answer,
-    'Difficulty': question.Difficulty
+    'Difficulty': question.Difficulty,
+    'form': AnswerForm()
   }
   return HttpResponse(template.render(context,request))
+
+def checkQuestionPage(request):
+  if request.method == 'POST':
+    form = AnswerForm(request.POST)
+    if form.is_valid():
+      Answer = form.cleaned_data["Answer"]
+      #check if correct
+      #branch to different parts
+      #Make redirects
+      return HttpResponseRedirect('/')
+  else:
+    return HttpResponse('/')
 
