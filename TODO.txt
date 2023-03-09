@@ -1,16 +1,16 @@
 Front End
-Home Page
+Styling
 Question Templates (Both types see pdf)
-Input Box with symbols
+Insert symbols Input Box
 Language Selection Header
+Rectangle around svg
+Send list of regions to Backend
+
 
 Back End
-Read in Questions (Question,Answer,Difficulty,{Hint}) DONE
-Set Operations Functions 
 Language JSON Files 
-Regex Equation Check 
-Balanced Paranthesis Check 
+Language backend
+Regex Equation Check
+Check Answer is correct (2 types of questions)
 
-
-
-Image Creation of 2/3 venn diagram (svg)
+Set == Set
