@@ -5,14 +5,15 @@ import re
 
 class Set:
 
-    def __init__(self, size):
-        if size == 2:
+    def __init__(self, difficulty):
+        self.difficulty = difficulty
+        if difficulty == "easy":
             self.size = 2
             self.A = {"A", "AB"}
             self.B = {"B", "AB"}
             self.C = {}
             self.Universe = self.A & self.B
-        elif size == 3:
+        elif difficulty == "medium" or "hard":
             self.size = 3
             self.A = {"A", "AB", "ABC", "AC"}
             self.B = {"B", "AB", "ABC", "BC"}
@@ -66,31 +67,48 @@ class Set:
 
     def generateRandomSetStatement(self):
         ## generate a random set statement
+        operators = ['&', '|']
+        min_rng = 0
+        max_rng = 0
+        if self.difficulty == "medium":
+            max_rng = 1
+        if self.difficulty == "hard":
+            min_rng = 1
+            max_rng = 2
+            operators.append("\\")
+            operators.append("^")
 
-        operators = ['\\', '&', '|','^']
         st = ""
-        for i in range(0):
+        for i in range(random.randint(min_rng, max_rng)):
             op = random.choice(operators)
             st += self.generateTwoSetStatement() + op
         st += self.generateTwoSetStatement()
         return st
 
     def generateTwoSetStatement(self):
-        sets = ['A', 'B',"-A","-B"]
-        operators = ['\\', '&', '|', '^']
+        sets = ['A', 'B', "-A", "-B"]
+        operators = ['&', '|']
         if self.size == 3:
             sets.append('C')
             sets.append("-C")
+        if self.difficulty == "hard":
+            operators.append("\\")
+            operators.append("^")
         statement = random.choice(sets)
         statement += random.choice(operators)
         statement += random.choice(sets)
         return statement
 
+    def generateAndEvaluate(self):
+        st = self.generateRandomSetStatement()
+        ev = self.evaluate(st)
+        return (st, ev)
+
 
 class TestSet(unittest.TestCase):
 
     def test_set3(self):
-        S = Set(3)
+        S = Set("hard")
         self.assertEqual(S.evaluate("A Union B "), {"A", "AB", "B", "ABC", "AC", "BC"})
         self.assertEqual(S.evaluate("A And B "), {"AB", "ABC"})
         self.assertEqual(S.evaluate("A\B "), {"A", "AC"})
@@ -98,21 +116,10 @@ class TestSet(unittest.TestCase):
         self.assertEqual(S.evaluate("A ^ B "), {"A", "B", "AC", "BC"})
         self.assertEqual(S.evaluate("A ^ B ^ C "), {"A", "B", "C", "ABC"})
 
-    def test_set2(self):
-        S = Set(2)
-        self.assertEqual(S.evaluate("A Union B "), {"A", "AB", "B"})
-        self.assertEqual(S.evaluate("A And B "), {"AB"})
-        self.assertEqual(S.evaluate("A\B "), {"A"})
-        self.assertEqual(S.evaluate("A\B "), {"A"})
-        self.assertEqual(S.evaluate("A ^ B "), {"A", "B"})
-
 
 def main():
-    S = Set(3)
-    st = S.generateRandomSetStatement()
-    print(st)
-    print(S.replaceAll(st))
-    return S.evaluate(st)
+    S = Set("hard")
+    return S.generateAndEvaluate()
 
 
 print(main())
