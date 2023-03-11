@@ -2,15 +2,11 @@ Front End
 Styling
 Question Templates (Both types see pdf)
 Insert symbols Input Box
-Language Selection Header
+Language Selection Flags Part
 Rectangle around svg
 Send list of regions to Backend
 
-
 Back End
 Language JSON Files 
-Language backend
 Regex Equation Check
 Check Answer is correct (2 types of questions)
-
-Set == Set

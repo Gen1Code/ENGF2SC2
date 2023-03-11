@@ -1,6 +1,25 @@
 {% extends "master.html" %}
-{% load i18n%}
-
+{% load i18n %}
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        function ajax(){
+            $.ajax({
+                type: 'POST',
+                url: "ajax/checkAnswer",
+                data: $("#answer-form").serialize(),
+                success: function (response) {
+                    // clear the form.
+                    console.log(response);
+                    $("#answer-form").trigger('reset');
+                },
+                error: function (response) {
+                    alert(response["responseJSON"]["error"]);
+                }
+            });
+        }
+    </script>
+{%endblock %}
 {% block body %}
     <a href="/">{% trans "Home Page"%}</a>
 
@@ -11,7 +30,7 @@
         <li>{{Difficulty}}</li>
     </ul>
 
-    <form action="checkquestion" method="post">
+    <form id="answer-form" onsubmit="ajax();return false;">
         {% csrf_token %}
         {{form}}
         <input type="submit" value="Submit">
