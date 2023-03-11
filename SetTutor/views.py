@@ -10,7 +10,7 @@ from django.conf import settings
 
 def homePage(request):
   template = loader.get_template('homepage.html')
-  return HttpResponse(template.render())
+  return HttpResponse(template.render({},request))
 
 def createQuestionPage(request):
   if request.method == 'POST':
