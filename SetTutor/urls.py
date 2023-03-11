@@ -3,8 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.homePage, name='homePage'),
+    path('setLanguage', views.setLanguage, name="setlanguage"),
     path('question', views.questionPage, name="questionPage"),
-    path('createquestion', views.createQuestionPage, name="createQuestionPage"),
-    path('checkquestion', views.checkQuestionPage, name="checkQuestion"),
-    path('setlanguage', views.setLanguage, name="setlanguage")
+    path('createQuestion', views.createQuestionPage, name="createQuestionPage"),
+    path('ajax/checkAnswer', views.checkAnswer, name="checkAnswer")
 ]

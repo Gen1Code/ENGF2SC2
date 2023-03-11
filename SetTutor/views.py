@@ -7,6 +7,8 @@ from django.utils.translation import gettext as _
 from django.utils import translation
 from django import http
 from django.conf import settings
+from django_ajax.decorators import ajax
+
 
 def homePage(request):
   template = loader.get_template('homepage.html')
@@ -38,7 +40,8 @@ def questionPage(request):
   }
   return HttpResponse(template.render(context,request))
 
-def checkQuestionPage(request):
+@ajax
+def checkAnswer(request):
   if request.method == 'POST':
     form = AnswerForm(request.POST)
     if form.is_valid():
@@ -49,9 +52,11 @@ def checkQuestionPage(request):
       #Check Database if Answer is the same (Answer is stored as a list of regions in database)
       #branch to different parts depending if correct or not
       #Make redirects
-      return HttpResponseRedirect('/')
+      if True:
+        return {"Result":True}
+      return {"Result":False}
   else:
-    return HttpResponse('/')
+    return {"Error":""}
 
 def setLanguage(request):
   if request.method == 'POST':

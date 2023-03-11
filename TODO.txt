@@ -10,5 +10,3 @@ Back End
 Language JSON Files 
 Regex Equation Check
 Check Answer is correct (2 types of questions)
-
-Set == Set
