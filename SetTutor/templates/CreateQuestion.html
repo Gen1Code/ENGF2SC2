@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html>
-<body>
-<a href="/">Home Page</a>
-<h1></h1>
-<form action="createquestion" method="post">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Submit">
-</form>
+{% extends "master.html" %}
+{% load i18n%}
 
-
-</body>
-</html>
+{% block body %}
+    <a href="/">Home Page</a>
+    <h1></h1>
+    <form action="createquestion" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Submit">
+    </form>
+{%endblock%}

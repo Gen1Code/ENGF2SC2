@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends "master.html" %}
+{% load i18n%}
 
-<h1>Hello World!</h1>
-<p>Welcome to my hOME pAGE</p>
-<a href="question">Questions</a>
-<a href="createquestion">Create Questions</a>
-
-</body>
-</html>
+{% block body %}
+    <h1>Hello World!</h1>
+    <p>Welcome to my hOME pAGE</p>
+    <a href="question">Questions</a>
+    <a href="createquestion">Create Questions</a>
+{% endblock %}

@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html>
-<body>
-<a href="/">Home Page</a>
-<h1>Question</h1>
-  
-<ul>
-    <li>{{Question}}</li>
-    <li>{{Answer}}</li>
-    <li>{{Difficulty}}</li>
-</ul>
+{% extends "master.html" %}
+{% load i18n%}
 
-<form action="checkquestion" method="post">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Submit">
-</form>
+{% block body %}
+    <a href="/">{% trans "Home Page"%}</a>
 
+    <h1>Question</h1>
+    
+    <ul>
+        <li>{{Question}}</li>
+        <li>{{Difficulty}}</li>
+    </ul>
 
-</body>
-</html>
+    <form action="checkquestion" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
