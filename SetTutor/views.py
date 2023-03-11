@@ -1,8 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import Questions
-from .forms import QuestionForm, AnswerForm
+from .forms import QuestionForm, AnswerForm, LanguageForm
 from django.shortcuts import render
+from django.utils.translation import gettext as _
+from django.utils import translation
+from django import http
+from django.conf import settings
 
 def homePage(request):
   template = loader.get_template('homepage.html')
@@ -49,3 +53,14 @@ def checkQuestionPage(request):
   else:
     return HttpResponse('/')
 
+def setLanguage(request):
+  if request.method == 'POST':
+    form = LanguageForm(request.POST)
+    if form.is_valid():
+      language = form.cleaned_data["Language"]
+      next = form.cleaned_data["next"]
+      translation.activate(language)
+      response = http.HttpResponseRedirect(next)
+      response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
+      return response
+  return HttpResponseRedirect('/')  

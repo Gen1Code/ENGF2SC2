@@ -13,3 +13,7 @@ class QuestionForm(forms.Form):
 
 class AnswerForm(forms.Form):
     Answer = forms.CharField(label='Answer', max_length=128)
+
+class LanguageForm(forms.Form):
+    Language = forms.CharField(max_length=5)
+    next = forms.CharField(max_length=128)
