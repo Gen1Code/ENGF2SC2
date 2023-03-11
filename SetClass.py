@@ -10,13 +10,13 @@ class Set:
             self.A = {"A", "AB"}
             self.B = {"B", "AB"}
             self.C = {}
-            self.Universe = self.A | self.B
+            self.Universe = self.A | self.B | {""}
         elif size == 3:
             self.size = 3
             self.A = {"A", "AB", "ABC", "AC"}
             self.B = {"B", "AB", "ABC", "BC"}
             self.C = {"C", "AC", "ABC", "BC"}
-            self.Universe = self.A | self.B | self.C
+            self.Universe = self.A | self.B | self.C | {""}
         else:
             self.size = -1
             print("Not implemented")
