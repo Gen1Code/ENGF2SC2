@@ -7,13 +7,13 @@ class Set:
 
     def __init__(self, difficulty):
         self.difficulty = difficulty
-        if difficulty == "easy":
+        if difficulty == "Easy":
             self.size = 2
             self.A = {"A", "AB"}
             self.B = {"B", "AB"}
             self.C = {}
             self.Universe = self.A | self.B | {""}
-        elif difficulty == "medium" or "hard":
+        elif difficulty == "Medium" or difficulty == "Hard":
             self.size = 3
             self.A = {"A", "AB", "ABC", "AC"}
             self.B = {"B", "AB", "ABC", "BC"}

@@ -53,6 +53,7 @@ def checkAnswer(request):
       Difficulty = form.cleaned_data["Difficulty"]
       #Regex Check
       x = Set(Difficulty)
+      print(x.regexCheck(Answer))
       if x.regexCheck(Answer):
         if x.balancedParentheses(Answer):
           regions = x.evaluate(Answer)
