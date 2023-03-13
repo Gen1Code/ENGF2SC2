@@ -1,9 +1,10 @@
-{% extends "master.html" %}
-{% load i18n%}
-
-{% block body %}
-    <h1>Hello World!</h1>
-    <p>Welcome to my hOME pAGE</p>
-    <a href="question">Questions</a>
-    <a href="createquestion">Create Questions</a>
+{% extends "master.html" %} {% load i18n%} {% block body %}
+<h1 id="title">Set Tutor</h1>
+<div id="container">
+  <div id="menu-button-container">
+    <a href="" class="menu-button"><p>Set Calculator</p></a>
+    <a href="question" class="menu-button"><p>Questions</p></a>
+    <a href="createquestion" class="menu-button"><p>Create Questions</p></a>
+  </div>
+</div>
 {% endblock %}

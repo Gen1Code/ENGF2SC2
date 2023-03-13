@@ -12,24 +12,26 @@ from SetClass import Set
 
 
 def homePage(request):
-  template = loader.get_template('homepage.html')
-  return HttpResponse(template.render({},request))
+    template = loader.get_template('homepage.html')
+    return HttpResponse(template.render({}, request))
+
 
 def createQuestionPage(request):
-  if request.method == 'POST':
-    form = QuestionForm(request.POST)
-    if form.is_valid():
-      #Change Answer from equation into list of regions
-      question = Questions(
-        Question=form.cleaned_data["Question"],
-        Answer=form.cleaned_data["Answer"],
-        Difficulty=form.cleaned_data["Difficulty"]
-      )
-      question.save()
-      return HttpResponseRedirect('/')
-  else:
-    form = QuestionForm()
-  return render(request, 'CreateQuestion.html', {'form': form})
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            # Change Answer from equation into list of regions
+            question = Questions(
+                Question=form.cleaned_data["Question"],
+                Answer=form.cleaned_data["Answer"],
+                Difficulty=form.cleaned_data["Difficulty"]
+            )
+            question.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = QuestionForm()
+    return render(request, 'CreateQuestion.html', {'form': form})
+
 
 def questionPage(request):
   question = Questions.objects.random()
@@ -65,14 +67,15 @@ def checkAnswer(request):
   else:
     return {"Error":""}
 
+
 def setLanguage(request):
-  if request.method == 'POST':
-    form = LanguageForm(request.POST)
-    if form.is_valid():
-      language = form.cleaned_data["Language"]
-      next = form.cleaned_data["next"]
-      translation.activate(language)
-      response = http.HttpResponseRedirect(next)
-      response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
-      return response
-  return HttpResponseRedirect('/')  
+    if request.method == 'POST':
+        form = LanguageForm(request.POST)
+        if form.is_valid():
+            language = form.cleaned_data["Language"]
+            next = form.cleaned_data["next"]
+            translation.activate(language)
+            response = http.HttpResponseRedirect(next)
+            response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
+            return response
+    return HttpResponseRedirect('/')
