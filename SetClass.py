@@ -33,8 +33,8 @@ class Set:
             "\\": "-",
             "A": "self.A",
             "B": "self.B",
-            "C": "self.C"}
-        return
+            "C": "self.C"
+        }
 
     def replaceAll(self, text):
         for i, j in self.dic.items():
@@ -127,4 +127,4 @@ def main():
     return S.generateAndEvaluate()
 
 
-print(main())
+#print(main())
