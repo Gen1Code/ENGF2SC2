@@ -1,5 +1,5 @@
 {% load i18n%}
-<form action="setlanguage" method="post">
+<form action="setlanguage" method="post" id="select-language">
     {% csrf_token %}
     <input name="next" type="hidden" value="{{ request.path }}" />
     <select name="Language">
