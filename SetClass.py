@@ -8,8 +8,6 @@ class Set:
     def __init__(self, difficulty):
         self.difficulty = difficulty
         if difficulty == "easy":
-    def __init__(self, size):
-        if size == 2:
             self.size = 2
             self.A = {"A", "AB"}
             self.B = {"B", "AB"}
