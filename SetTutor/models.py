@@ -11,7 +11,6 @@ class Questions(models.Model):
     Question = models.CharField(max_length=512)
     Answer = models.CharField(max_length=128)
     Difficulty = models.CharField(max_length=16)
-    Size = models.IntegerField()
 
     objects = QuestionsManager()
 

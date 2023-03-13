@@ -39,7 +39,6 @@ def questionPage(request):
   context = {
     'Question': question.Question,
     'Difficulty': question.Difficulty,
-    'Size': question.Size,
     'form': AnswerForm()
   }
   return HttpResponse(template.render(context,request))
@@ -51,9 +50,9 @@ def checkAnswer(request):
     if form.is_valid():
       Answer = form.cleaned_data["Answer"]
       Question = form.cleaned_data["Question"]
-      Size = form.cleaned_data["Size"]
+      Difficulty = form.cleaned_data["Difficulty"]
       #Regex Check
-      x = Set(int(Size))
+      x = Set(Difficulty)
       if x.regexCheck(Answer):
         if x.balancedParentheses(Answer):
           regions = x.evaluate(Answer)

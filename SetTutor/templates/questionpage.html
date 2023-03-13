@@ -33,7 +33,7 @@
     <form id="answer-form" onsubmit="ajax();return false;">
         {% csrf_token %}
         {{form}}
-        <input type="hidden" value="{{Size}}" name="Size">
+        <input type="hidden" value="{{Difficulty}}" name="Difficulty">
         <input type="hidden" value="{{Question}}" name="Question">
         <input type="submit" value="Submit">
     </form>
