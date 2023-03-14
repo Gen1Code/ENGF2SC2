@@ -24,15 +24,20 @@ def createQuestionPage(request):
             Q = form.cleaned_data["Question"]
             D = form.cleaned_data["Difficulty"]
             x = Set(D)
-            A = x.evaluate(form.cleaned_data["Answer"])
+            A = form.cleaned_data["Answer"]
 
-            question = Questions(
-                Question=Q,
-                Answer=A,
-                Difficulty=D
-            )
-            question.save()
-            return HttpResponseRedirect('/')
+            if x.regexCheck(A):
+              if x.balancedParentheses(A):
+                ARegions = x.evaluate(A)
+
+                question = Questions(
+                    Question=Q,
+                    Answer=ARegions,
+                    Difficulty=D
+                )
+                question.save()
+
+                return HttpResponseRedirect('/')
     else:
         form = QuestionForm()
     return render(request, 'CreateQuestion.html', {'form': form})
@@ -62,6 +67,9 @@ def checkAnswer(request):
         if x.balancedParentheses(Answer):
           regions = x.evaluate(Answer)
           #Check Database if Answer is the same (Answer is stored as a list of regions in database)
+          print(regions)
+          print(getAnswer(Question))
+          print(regions == getAnswer(Question))
           if regions == getAnswer(Question):
             return {"Result":True}
 
