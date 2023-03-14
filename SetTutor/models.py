@@ -14,5 +14,5 @@ class Questions(models.Model):
 
     objects = QuestionsManager()
 
-def getAnswer(Question):
-    pass
+def getAnswer(Q):
+    return Questions.objects.values("Answer").get(Question=Q)['Answer']

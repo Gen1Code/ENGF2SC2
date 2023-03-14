@@ -73,9 +73,9 @@ class Set:
         operators = ['&', '|']
         min_rng = 0
         max_rng = 0
-        if self.difficulty == "medium":
+        if self.difficulty == "Medium":
             max_rng = 1
-        if self.difficulty == "hard":
+        if self.difficulty == "Hard":
             min_rng = 1
             max_rng = 2
             operators.append("\\")
@@ -111,7 +111,7 @@ class Set:
 class TestSet(unittest.TestCase):
 
     def test_set3(self):
-        S = Set("hard")
+        S = Set("Hard")
         self.assertEqual(S.evaluate("A Union B "), {"A", "AB", "B", "ABC", "AC", "BC"})
         self.assertEqual(S.evaluate("A And B "), {"AB", "ABC"})
         self.assertEqual(S.evaluate("A\B "), {"A", "AC"})
@@ -121,7 +121,7 @@ class TestSet(unittest.TestCase):
 
 
 def main():
-    S = Set("hard")
+    S = Set("Hard")
     return S.generateAndEvaluate()
 
 

@@ -21,10 +21,15 @@ def createQuestionPage(request):
         form = QuestionForm(request.POST)
         if form.is_valid():
             # Change Answer from equation into list of regions
+            Q = form.cleaned_data["Question"]
+            D = form.cleaned_data["Difficulty"]
+            x = Set(D)
+            A = x.evaluate(form.cleaned_data["Answer"])
+
             question = Questions(
-                Question=form.cleaned_data["Question"],
-                Answer=form.cleaned_data["Answer"],
-                Difficulty=form.cleaned_data["Difficulty"]
+                Question=Q,
+                Answer=A,
+                Difficulty=D
             )
             question.save()
             return HttpResponseRedirect('/')
@@ -53,7 +58,6 @@ def checkAnswer(request):
       Difficulty = form.cleaned_data["Difficulty"]
       #Regex Check
       x = Set(Difficulty)
-      print(x.regexCheck(Answer))
       if x.regexCheck(Answer):
         if x.balancedParentheses(Answer):
           regions = x.evaluate(Answer)
