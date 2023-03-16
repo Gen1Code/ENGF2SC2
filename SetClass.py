@@ -94,7 +94,7 @@ class Set:
         if self.size == 3:
             sets.append('C')
             sets.append("-C")
-        if self.difficulty == "hard":
+        if self.difficulty == "Hard":
             operators.append("\\")
             operators.append("^")
         statement = random.choice(sets)

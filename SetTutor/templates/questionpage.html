@@ -3,11 +3,15 @@
 {% block head %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
+        
+        //TODO: function that shows Diagram from Question (called if type is 1 to show to user)
+        //TODO: function that changes Answer to {...} from Diagram (called if type is 2 when sending ajax)
+
         function ajax(){
             $.ajax({
                 type: 'POST',
                 url: "ajax/checkAnswer",
-                data: $("#answer-form").serialize(),//function that changes ANswer is needed here
+                data: $("#answer-form").serialize(),
                 success: function (response) {
                     // clear the form.
                     console.log(response);

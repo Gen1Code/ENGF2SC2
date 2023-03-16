@@ -27,9 +27,12 @@ def createQuestionPage(request):
       T = form.cleaned_data["Type"]
       x = Set(D)
 
-      if T == DIAGRAM_TYPE:
+      if T == SIMPLIFY_TYPE:
+        #Check that Question is {...}
+        pass
+      elif T == DIAGRAM_TYPE:
         if not x.regexCheck(Q) or not x.balancedParentheses(Q):
-          return HttpResponseRedirect('/')        
+          return HttpResponseRedirect('/')     
 
       question = Questions(
           Question=Q,
@@ -60,15 +63,14 @@ def checkAnswer(request):
     if form.is_valid():
       Question = form.cleaned_data["Question"]
       Difficulty = form.cleaned_data["Difficulty"]
-      Type = form.cleaned_data["Type"]
+      Type = int(form.cleaned_data["Type"])
       Answer = form.cleaned_data["Answer"]
 
       if correctAnswer(Question,Difficulty,Type,Answer):
         return {"Result":True}
 
       return {"Result":False}
-  else:
-    return {"Error":""}
+  return {"Error":""}
 
 
 def setLanguage(request):
@@ -88,8 +90,12 @@ def correctAnswer(Question,Difficulty,Type,Answer):
   if Type == SIMPLIFY_TYPE:
     if not x.regexCheck(Answer) or not x.balancedParentheses(Answer):
        return False
+    print(x.evaluate(Answer))
+    print(Question)
+    print(x.evaluate(Answer) == Question)
     return x.evaluate(Answer) == Question
   elif Type == DIAGRAM_TYPE:
     #Check for answer is {...}
+    print(x.evaluate(Question))
     return x.evaluate(Question) == Answer
   

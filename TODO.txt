@@ -4,7 +4,7 @@ Question Templates (Both types see pdf)
 Insert symbols Input Box
 Language Selection Flags Part
 Rectangle around svg
-Send list of regions to Backend
+Send list of regions to Backend (see questionpage.html and CreateQuestion.html)
 
 Back End
 Language JSON Files 
