@@ -61,12 +61,9 @@ class Set:
             return False
 
     def regexCheck(self, text):
-        # Check if text is a valid set statement
-        pattern = r'^([ABC]*|[ABC]*\\[ABC]*|[ABC]*&[ABC]*|[ABC]*\|[ABC]*|[ABC]*\^[ABC]*)$'
-        if re.match(pattern, text):
-            return True
-        else:
-            return False
+    pattern = r"(\([ABC]+\))*[ABC]+(\([ABC]+\))*([\\&|^](\([ABC]+\))*[ABC]+(\([ABC]+\))*)*"
+    return bool(re.fullmatch(pattern, text))
+
 
     def generateRandomSetStatement(self):
         ## generate a random set statement
