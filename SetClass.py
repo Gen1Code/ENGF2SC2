@@ -60,11 +60,13 @@ class Set:
         else:
             return False
 
-    def regexCheck(self, text):
-        pattern = r"(\([ABC]+\))*[ABC]+(\([ABC]+\))*([\\&|^](\([ABC]+\))*[ABC]+(\([ABC]+\))*)*"
-        pattern = r"([\(-]*[ABC][\)]*[\\&|^][\(-]*[ABC]\)*)+([\\&|^][\(-]*[ABC][\)]*)+"
+    def equationRegexCheck(self, text):
+        pattern = r"([(-]*[ABC])+([\\&|^][(-]*[ABC][)]*)*"
         return bool(re.fullmatch(pattern, text))
 
+    def regionRegexCheck(self,text):
+        pattern = r"{(\"(?:A|B|C|AB|BC|AC|ABC){0,1}\",)*\"(?:A|B|C|AB|BC|AC|ABC){0,1}\"}"
+        return bool(re.fullmatch(pattern,text))
 
     def generateRandomSetStatement(self):
         ## generate a random set statement

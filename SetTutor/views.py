@@ -21,17 +21,16 @@ def createQuestionPage(request):
   if request.method == 'POST':
     form = QuestionForm(request.POST)
     if form.is_valid():
-      # Change Answer from equation into list of regions
       Q = form.cleaned_data["Question"]
       D = form.cleaned_data["Difficulty"]
       T = form.cleaned_data["Type"]
       x = Set(D)
 
       if T == SIMPLIFY_TYPE:
-        #Check that Question is {...}
-        pass
+        if not x.regionRegexCheck(Q):
+          return HttpResponseRedirect('/')                
       elif T == DIAGRAM_TYPE:
-        if not x.regexCheck(Q) or not x.balancedParentheses(Q):
+        if not x.equationRegexCheck(Q) or not x.balancedParentheses(Q):
           return HttpResponseRedirect('/')     
 
       question = Questions(
@@ -88,14 +87,15 @@ def setLanguage(request):
 def correctAnswer(Question,Difficulty,Type,Answer):
   x = Set(Difficulty)
   if Type == SIMPLIFY_TYPE:
-    if not x.regexCheck(Answer) or not x.balancedParentheses(Answer):
+    if not x.equationRegexCheck(Answer) or not x.balancedParentheses(Answer):
        return False
     print(x.evaluate(Answer))
     print(Question)
     print(x.evaluate(Answer) == Question)
     return x.evaluate(Answer) == Question
   elif Type == DIAGRAM_TYPE:
-    #Check for answer is {...}
+    if not x.regionRegexCheck(Answer):
+       return False
     print(x.evaluate(Question))
     return x.evaluate(Question) == Answer
   
