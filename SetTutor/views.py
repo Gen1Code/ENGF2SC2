@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from .models import Questions, getAnswer
+from .models import Questions
 from .forms import QuestionForm, LanguageForm, AnswerFormReturned
 from django.shortcuts import render
 from django.utils.translation import gettext as _
