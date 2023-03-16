@@ -8,4 +8,4 @@ Send list of regions to Backend (see questionpage.html and CreateQuestion.html)
 
 Back End
 Language JSON Files 
-Check Answer is correct (2 types of questions)
+Set == Set

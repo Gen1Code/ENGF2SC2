@@ -61,8 +61,9 @@ class Set:
             return False
 
     def regexCheck(self, text):
-    pattern = r"(\([ABC]+\))*[ABC]+(\([ABC]+\))*([\\&|^](\([ABC]+\))*[ABC]+(\([ABC]+\))*)*"
-    return bool(re.fullmatch(pattern, text))
+        pattern = r"(\([ABC]+\))*[ABC]+(\([ABC]+\))*([\\&|^](\([ABC]+\))*[ABC]+(\([ABC]+\))*)*"
+        pattern = r"([\(-]*[ABC][\)]*[\\&|^][\(-]*[ABC]\)*)+([\\&|^][\(-]*[ABC][\)]*)+"
+        return bool(re.fullmatch(pattern, text))
 
 
     def generateRandomSetStatement(self):
