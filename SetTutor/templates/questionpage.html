@@ -7,7 +7,7 @@
             $.ajax({
                 type: 'POST',
                 url: "ajax/checkAnswer",
-                data: $("#answer-form").serialize(),
+                data: $("#answer-form").serialize(),//function that changes ANswer is needed here
                 success: function (response) {
                     // clear the form.
                     console.log(response);
@@ -28,13 +28,15 @@
     <ul>
         <li>{{Question}}</li>
         <li>{{Difficulty}}</li>
+        <li>{{Type}}</li>
     </ul>
 
     <form id="answer-form" onsubmit="ajax();return false;">
         {% csrf_token %}
-        {{form}}
         <input type="hidden" value="{{Difficulty}}" name="Difficulty">
         <input type="hidden" value="{{Question}}" name="Question">
+        <input type="hidden" value="{{Type}}" name="Type">
+        <input type="text" name="Answer">
         <input type="submit" value="Submit">
     </form>
 {% endblock %}

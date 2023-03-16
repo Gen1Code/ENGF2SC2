@@ -8,11 +8,8 @@ class QuestionsManager(models.Manager):
         return self.all()[random_index]
     
 class Questions(models.Model):
-    Question = models.CharField(max_length=512,unique=True)
-    Answer = models.CharField(max_length=128)
+    Question = models.CharField(max_length=512)
     Difficulty = models.CharField(max_length=16)
+    Type = models.IntegerField()
 
     objects = QuestionsManager()
-
-def getAnswer(Q):
-    return Questions.objects.values("Answer").get(Question=Q)['Answer']

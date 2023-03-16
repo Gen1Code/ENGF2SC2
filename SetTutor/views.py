@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import Questions, getAnswer
-from .forms import QuestionForm, AnswerForm, LanguageForm, AnswerFormReturned
+from .forms import QuestionForm, LanguageForm, AnswerFormReturned
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.utils import translation
@@ -10,38 +10,38 @@ from django.conf import settings
 from django_ajax.decorators import ajax
 from SetClass import Set
 
+SIMPLIFY_TYPE = 1
+DIAGRAM_TYPE = 2
 
 def homePage(request):
     template = loader.get_template('homepage.html')
     return HttpResponse(template.render({}, request))
 
-
 def createQuestionPage(request):
-    if request.method == 'POST':
-        form = QuestionForm(request.POST)
-        if form.is_valid():
-            # Change Answer from equation into list of regions
-            Q = form.cleaned_data["Question"]
-            D = form.cleaned_data["Difficulty"]
-            x = Set(D)
-            A = form.cleaned_data["Answer"]
+  if request.method == 'POST':
+    form = QuestionForm(request.POST)
+    if form.is_valid():
+      # Change Answer from equation into list of regions
+      Q = form.cleaned_data["Question"]
+      D = form.cleaned_data["Difficulty"]
+      T = form.cleaned_data["Type"]
+      x = Set(D)
 
-            if x.regexCheck(A):
-              if x.balancedParentheses(A):
-                ARegions = x.evaluate(A)
+      if T == DIAGRAM_TYPE:
+        if not x.regexCheck(Q) or not x.balancedParentheses(Q):
+          return HttpResponseRedirect('/')        
 
-                question = Questions(
-                    Question=Q,
-                    Answer=ARegions,
-                    Difficulty=D
-                )
-                question.save()
+      question = Questions(
+          Question=Q,
+          Difficulty=D,
+          Type=T
+      )
+      question.save()
 
-                return HttpResponseRedirect('/')
-    else:
-        form = QuestionForm()
-    return render(request, 'CreateQuestion.html', {'form': form})
-
+      return HttpResponseRedirect('/')
+  else:
+      form = QuestionForm()
+  return render(request, 'CreateQuestion.html', {'form': form})
 
 def questionPage(request):
   question = Questions.objects.random()
@@ -49,7 +49,7 @@ def questionPage(request):
   context = {
     'Question': question.Question,
     'Difficulty': question.Difficulty,
-    'form': AnswerForm()
+    'Type':question.Type
   }
   return HttpResponse(template.render(context,request))
 
@@ -58,23 +58,14 @@ def checkAnswer(request):
   if request.method == 'POST':
     form = AnswerFormReturned(request.POST)
     if form.is_valid():
-      Answer = form.cleaned_data["Answer"]
       Question = form.cleaned_data["Question"]
       Difficulty = form.cleaned_data["Difficulty"]
-      #Regex Check
-      x = Set(Difficulty)
-      if x.regexCheck(Answer):
-        if x.balancedParentheses(Answer):
-          regions = x.evaluate(Answer)
-          #Check Database if Answer is the same (Answer is stored as a list of regions in database)
-          print(regions)
-          print(getAnswer(Question))
-          print(regions == getAnswer(Question))
-          if regions == getAnswer(Question):
-            return {"Result":True}
+      Type = form.cleaned_data["Type"]
+      Answer = form.cleaned_data["Answer"]
 
-      #branch to different parts depending if correct or not
-      #Make redirects
+      if correctAnswer(Question,Difficulty,Type,Answer):
+        return {"Result":True}
+
       return {"Result":False}
   else:
     return {"Error":""}
@@ -91,3 +82,14 @@ def setLanguage(request):
             response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
             return response
     return HttpResponseRedirect('/')
+
+def correctAnswer(Question,Difficulty,Type,Answer):
+  x = Set(Difficulty)
+  if Type == SIMPLIFY_TYPE:
+    if not x.regexCheck(Answer) or not x.balancedParentheses(Answer):
+       return False
+    return x.evaluate(Answer) == Question
+  elif Type == DIAGRAM_TYPE:
+    #Check for answer is {...}
+    return x.evaluate(Question) == Answer
+  
