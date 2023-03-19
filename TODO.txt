@@ -7,5 +7,5 @@ Rectangle around svg
 Send list of regions to Backend (see questionpage.html and CreateQuestion.html)
 
 Back End
-Language JSON Files 
+Language Files 
 Set == Set

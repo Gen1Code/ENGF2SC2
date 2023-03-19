@@ -1,7 +1,26 @@
 {% extends "master.html" %}
 {% load i18n%}
 {% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <script>
+        $(function(){ /* DOM ready */
+            $('#id_Type').change(function (e) {
+                var selectVal = $("#id_Type option:selected").val();
+                if(selectVal == "1"){
+                    $("#id_Question").css("display","none");
+                    $('label[for=id_Question]').css("display", "none");
+                    //Show Diagram
+                }else{
+                    $("#id_Question").css("display","");
+                    $('label[for=id_Question]').css("display", "");
+                    //Hide Diagram
+                }
+           });
+        });
+
+       
+
 
         //TODO: function needed that shows Diagram if Type is Simplify (1)
         //and shows an Answer input box if Type is Diagram (2)
@@ -13,7 +32,7 @@
 {% block body %}
     <a href="/">Home Page</a>
     <h1></h1>
-    <form action="createQuestion" method="post">
+    <form id="questionform" action="createQuestion" method="post">
         {% csrf_token %}
         {{form}}
         <input type="submit" value="Submit">

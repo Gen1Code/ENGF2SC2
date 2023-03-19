@@ -14,7 +14,7 @@ TYPE_CHOICES = (
 class QuestionForm(forms.Form):
     Question = forms.CharField(label='Question', max_length=512)
     Difficulty = forms.ChoiceField(label="Difficulty", choices=DIFFICULTY_CHOICES)
-    Type = forms.ChoiceField(label="Type", choices=TYPE_CHOICES)
+    Type = forms.ChoiceField(label="Type", choices=TYPE_CHOICES,initial=2)
 
 class AnswerFormReturned(forms.Form):
     Question = forms.CharField(max_length=128)
