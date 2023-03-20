@@ -4,14 +4,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
         
-        //TODO: function that shows Diagram from Question (called if type is 1 to show to user)
+        //TODO: function that shows Diagram wither with regions coloured on or blank with user input responsiveness
+        //TODO: Show question function
         //TODO: function that changes Answer to {...} from Diagram (called if type is 2 when sending ajax)
+
+        $(function(){ /* DOM ready */
+            if({{Type}} == 1){
+                $("#id_Answer").css("display","none");
+                //Show Diagram Q + "write as a simplified expression"
+            }else{
+                $("#id_Answer").css("display","");
+                //Show Diagram (for user input) + "Shade X on Diagram"
+            }
+        });
 
         function ajax(){
             $.ajax({
                 type: 'POST',
                 url: "ajax/checkAnswer",
-                data: $("#answer-form").serialize(),
+                data: $("#answer-form").serialize(),// 3rd TODO here to change Answer
                 success: function (response) {
                     // clear the form.
                     console.log(response);
@@ -40,7 +51,7 @@
         <input type="hidden" value="{{Difficulty}}" name="Difficulty">
         <input type="hidden" value="{{Question}}" name="Question">
         <input type="hidden" value="{{Type}}" name="Type">
-        <input type="text" name="Answer">
+        <input type="text" name="Answer" id="id_Answer">
         <input type="submit" value="Submit">
     </form>
 {% endblock %}
