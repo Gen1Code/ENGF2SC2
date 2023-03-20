@@ -13,10 +13,7 @@ venn.addEventListener("click", function (event) {
   // Add active class to matching elements
   const svgId = event.target.getAttribute("id");
   console.log(svgId);
-  // console.log("svgid", svgId);
   const matchingElems = document.querySelectorAll("." + svgId);
-  // console.log("mathcingelems", matchingElems);
-  // console.log(event.target.classList[0] == "active");
 
   var classes = event.target.classList;
   var classesList = Array.from([...classes]);
@@ -45,10 +42,7 @@ venn.addEventListener("mouseover", function (event) {
 
   // Add active class to matching elements
   const svgId = event.target.getAttribute("id");
-  // console.log("svgid", svgId);
   const matchingElems = document.querySelectorAll("." + svgId);
-  // console.log("mathcingelems", matchingElems);
-  // console.log(event.target.classList[0] == "highlight");
 
   var classes = event.target.classList;
   var classesList = Array.from([...classes]);
@@ -60,15 +54,19 @@ venn.addEventListener("mouseover", function (event) {
 });
 
 function getRegions() {
-  console.log("GET REGIONS");
   const active = document.getElementsByClassName("active");
   const activeList = [];
   for (i in active) {
     if (active[i].id) {
-      activeList.push(active[i].id);
+      if(active[i].id == "venn"){
+        activeList.push("");
+      }else{
+        activeList.push(active[i].id);
+      }
     }
   }
-  console.log(activeList);
-  const regionsList = document.getElementById("regions-list");
-  regionsList.innerHTML = activeList;
+  if(activeList.length == 0){
+    return {};
+  }
+  return "{'" + activeList.join("','") + "'}";  
 }

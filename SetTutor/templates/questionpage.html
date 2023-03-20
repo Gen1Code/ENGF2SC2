@@ -5,7 +5,6 @@
     <script>
         
         //TODO: function that shows Diagram wither with regions coloured on or blank with user input responsiveness
-        //TODO: function that changes Answer to {...} from Diagram (called if type is 2 when sending ajax)
 
         $(function(){ /* DOM ready */
             if({{Type}} == 1){
@@ -19,11 +18,18 @@
             }
         });
 
+        function getAnswer(){
+            if({{Type}} == 2){
+                $("#id_Answer").val(getRegions());
+            }
+            return $("#answer-form").serialize();
+        }
+
         function ajax(){
             $.ajax({
                 type: 'POST',
                 url: "ajax/checkAnswer",
-                data: $("#answer-form").serialize(),// 2nd TODO here to change Answer
+                data: getAnswer(),
                 success: function (response) {
                     // clear the form.
                     console.log(response);
@@ -57,14 +63,7 @@
         <input type="text" name="Answer" id="id_Answer">
         <input type="submit" value="Submit">
     </form>
-    <svg
-    xmlns:svg="http://www.w3.org/2000/svg"
-    xmlns="http://www.w3.org/2000/svg"
-    version="1.1"
-    width="440"
-    height="410"
-    id="venn"
-    >
+    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="440" height="410" id="venn">
         <defs id="defs4" />
         <g transform="translate(-125.5,-151.86218)" id="layer1">
         <path
@@ -101,7 +100,4 @@
         />
         </g>
     </svg>
-    <p id="regions-list"></p>
-    
-    <button" id="get-regions-btn" onclick="getRegions()">Get regions</button>
 {% endblock %}
