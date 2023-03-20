@@ -11,15 +11,18 @@
                     $("#id_Question").css("display","none");
                     $('label[for=id_Question]').css("display", "none");
                     //Show Diagram
+                    $("#venn").css("display","");
                 }else{
                     $("#id_Question").css("display","");
                     $('label[for=id_Question]').css("display", "");
                     //Hide Diagram
+                    $("#venn").css("display","none");
                 }
            });
         });
 
         function setAnswer(){
+            //If Diagram then set Question Field to representative regions
             if($('#id_Type').val() == 1){
                 $("#id_Question").val(getRegions());
             }
@@ -37,7 +40,7 @@
         {{form}}
         <input type="submit" value="Submit">
     </form>
-    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="440" height="410" id="venn">
+    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="440" height="410" id="venn" style="display:none">
         <defs id="defs4" />
         <g transform="translate(-125.5,-151.86218)" id="layer1">
         <path

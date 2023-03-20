@@ -4,21 +4,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
         
-        //TODO: function that shows Diagram wither with regions coloured on or blank with user input responsiveness
+        //TODO: function that shows Diagram with regions coloured in according to Question
 
         $(function(){ /* DOM ready */
             if({{Type}} == 1){
                 $("#id_Answer").css("display","");
                 //Show Diagram Q
+
+
                 $("#questiontext").html("Write the simplified equation for this diagram");
             }else{
                 $("#id_Answer").css("display","none");
                 //Show Diagram (for user input) 
+                $("#venn").css("display","");
+
                 $("#questiontext").html("Shade {{Question}} on Diagram");
             }
         });
 
         function getAnswer(){
+            //If Diagram then set Answer Field to representative regions
             if({{Type}} == 2){
                 $("#id_Answer").val(getRegions());
             }
@@ -63,7 +68,7 @@
         <input type="text" name="Answer" id="id_Answer">
         <input type="submit" value="Submit">
     </form>
-    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="440" height="410" id="venn">
+    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="440" height="410" id="venn" style="display:none">
         <defs id="defs4" />
         <g transform="translate(-125.5,-151.86218)" id="layer1">
         <path
