@@ -9,12 +9,11 @@
 
         $(function(){ /* DOM ready */
             if({{Type}} == 1){
-                $("#id_Answer").css("display","none");
+                $("#id_Answer").css("display","");
                 //Show Diagram Q
                 $("#questiontext").html("Write the simplified equation for this diagram");
-
             }else{
-                $("#id_Answer").css("display","");
+                $("#id_Answer").css("display","none");
                 //Show Diagram (for user input) 
                 $("#questiontext").html("Shade {{Question}} on Diagram");
             }
