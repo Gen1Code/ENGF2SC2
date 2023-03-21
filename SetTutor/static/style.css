@@ -113,6 +113,9 @@
 #venn {
   border: 1px solid black;
   margin: 10px;
+  /* min-width: 450px;
+  min-height: 450px;
+  padding: 10px; */
 }
 
 .active {
