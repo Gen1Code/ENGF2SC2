@@ -23,8 +23,8 @@ class Set:
             self.size = -1
             print("Not implemented")
         self.dic = {
-            "Union": "|",
-            "And": "&",
+            "UNION": "|",
+            "AND": "&",
             " ^ ": "^",
             "-": "self.Universe -",
             " ": "",
