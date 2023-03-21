@@ -21,7 +21,7 @@ def createQuestionPage(request):
   if request.method == 'POST':
     form = QuestionForm(request.POST)
     if form.is_valid():
-      Q = form.cleaned_data["Question"]
+      Q = form.cleaned_data["Question"].upper()
       D = form.cleaned_data["Difficulty"]
       T = form.cleaned_data["Type"]
       x = Set(D)
@@ -89,14 +89,9 @@ def correctAnswer(Question,Difficulty,Type,Answer):
   if Type == SIMPLIFY_TYPE:
     if not x.equationRegexCheck(Answer) or not x.balancedParentheses(Answer):
        return False
-    print(x.evaluate(Answer))
-    print(Question)
-    print(set(Question))
-    print(x.evaluate(Answer) == Question)
-    return x.evaluate(Answer) == Question
+    return x.evaluate(Answer) == eval(Question)
   elif Type == DIAGRAM_TYPE: 
     if not x.regionRegexCheck(Answer):
        return False
-    print(x.evaluate(Question))
-    return x.evaluate(Question) == Answer
+    return x.evaluate(Question) == eval(Answer)
   

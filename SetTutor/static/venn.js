@@ -78,8 +78,7 @@ function shadeRegions(set) {
   });
 
   const regionsList = set.replace("{","").replace("}","").replaceAll("&#x27;","").split(",");
-  console.log(regionsList);
-
+  
   for (i in regionsList) {
     const matchingElems = document.getElementById(regionsList[i]);
     matchingElems.classList.add("active");

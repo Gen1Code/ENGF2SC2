@@ -28,14 +28,12 @@
             }
         }
 
-        //TODO: function needed that show/hide Diagram
-
     </script>
 {% endblock%}
 {% block body %}
     <a href="/">Home Page</a>
     <h1></h1>
-    <form id="questionform" action="createQuestion" method="post" onsubmit="setAnswer()">
+    <form id="questionform" action="createQuestion" method="post" onsubmit="setAnswer()" novalidate>
         {% csrf_token %}
         {{form}}
         <input type="submit" value="Submit">

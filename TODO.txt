@@ -3,9 +3,9 @@ Styling
 Insert symbols Input Box
 Language Selection Flags Part
 svg for only AB
+Do stuff with result (answer correct or not)
 
 Back End
 Language Files 
-Set == Set
 
 Clean up Code

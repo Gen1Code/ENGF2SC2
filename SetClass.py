@@ -65,7 +65,7 @@ class Set:
         return bool(re.fullmatch(pattern, text))
 
     def regionRegexCheck(self,text):
-        pattern = r"{(\"(?:A|B|C|AB|BC|AC|ABC){0,1}\",)*\"(?:A|B|C|AB|BC|AC|ABC){0,1}\"}"
+        pattern = r"{(\'(?:A|B|C|AB|BC|AC|ABC){0,1}\',)*\'(?:A|B|C|AB|BC|AC|ABC){0,1}\'}"
         return bool(re.fullmatch(pattern,text))
 
     def generateRandomSetStatement(self):
