@@ -8,7 +8,9 @@
       if({{Type}} == 1){
           $("#id_Answer").css("display","");
           //Show Diagram Q
+          shadeRegions("{{Question}}");
 
+          $("#venn").css("display","");
 
           $("#questiontext").html("Write the simplified equation for this diagram");
       }else{
@@ -110,10 +112,5 @@
     />
   </g>
 </svg>
-<!-- <button" id="get-regions-btn" onclick="shadeRegions()">shade regions</button> -->
-<form onsubmit="shadeRegions();return false;">
-  <input type="text" id="regions-input" placeholder="e.g. AB, BC" value="" />
-  <button type="submit" value="Submit">Shade Regions</button>
-</form>
 
 {% endblock %}

@@ -91,9 +91,10 @@ def correctAnswer(Question,Difficulty,Type,Answer):
        return False
     print(x.evaluate(Answer))
     print(Question)
+    print(set(Question))
     print(x.evaluate(Answer) == Question)
     return x.evaluate(Answer) == Question
-  elif Type == DIAGRAM_TYPE:
+  elif Type == DIAGRAM_TYPE: 
     if not x.regionRegexCheck(Answer):
        return False
     print(x.evaluate(Question))

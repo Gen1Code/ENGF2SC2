@@ -71,16 +71,15 @@ function getRegions() {
   return "{'" + activeList.join("','") + "'}";
 }
 
-function shadeRegions() {
+function shadeRegions(set) {
   const paths = document.querySelectorAll("path");
   paths.forEach(function (path) {
     path.classList.remove("active");
   });
-  var selectedRegions = document.getElementById("regions-input").value;
-  console.log(selectedRegions);
-  // const selectedRegion = "AB, BC, venn";
-  const regionsList = selectedRegions.split(", ");
+
+  const regionsList = set.replace("{","").replace("}","").replaceAll("&#x27;","").split(",");
   console.log(regionsList);
+
   for (i in regionsList) {
     const matchingElems = document.getElementById(regionsList[i]);
     matchingElems.classList.add("active");
