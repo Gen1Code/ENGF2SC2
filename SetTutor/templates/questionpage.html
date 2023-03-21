@@ -2,8 +2,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
 
-  //TODO: function that shows Diagram with regions coloured in according to Question
-
   $(function(){ /* DOM ready */
       if({{Type}} == 1){
           $("#id_Answer").css("display","");
@@ -13,14 +11,14 @@
 
           $("#venn").css("display","");
 
-          $("#questiontext").html("Write the simplified equation for this diagram");
+          $("#questiontext").html("{% trans "Simplify" %}");
       }else{
           canShadeVenn();
           $("#id_Answer").css("display","none");
           //Show Diagram (for user input)
           $("#venn").css("display","");
 
-          $("#questiontext").html("Shade {{Question}} on Diagram");
+          $("#questiontext").html("{% trans "Shade" %} {{Question}} {% trans "on-Diagram" %}");
       }
   });
 
@@ -51,7 +49,7 @@
 {%endblock %} {% block body %}
 <a href="/">{% trans "Home Page"%}</a>
 
-<h1>Question</h1>
+<h1>{% trans "Question" %}</h1>
 
 <p id="questiontext"></p>
 
@@ -67,7 +65,7 @@
   <input type="hidden" value="{{Question}}" name="Question" />
   <input type="hidden" value="{{Type}}" name="Type" />
   <input type="text" name="Answer" id="id_Answer" />
-  <input type="submit" value="Submit" />
+  <input type="submit" value="{% trans "Submit" %}" />
 </form>
 <svg
   xmlns:svg="http://www.w3.org/2000/svg"

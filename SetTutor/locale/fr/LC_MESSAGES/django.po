@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-11 14:54+0000\n"
+"POT-Creation-Date: 2023-03-21 19:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-#: .\templates\questionpage.html:5
+
+#: .\templates\CreateQuestion.html:32 .\templates\questionpage.html:50
 msgid "Home Page"
 msgstr "Page D'accueil"
+
+#: .\templates\HomePage.html:5
+msgid "Set Calculator"
+msgstr "Calculatrice d'ensemble"
+
+#: .\templates\HomePage.html:6
+msgid "Questions"
+msgstr ""
+
+#: .\templates\HomePage.html:7
+msgid "Create Questions"
+msgstr ""
+
+#: .\templates\questionpage.html:14
+msgid "Simplify"
+msgstr ""
+
+#: .\templates\questionpage.html:21
+msgid "Shade"
+msgstr ""
+
+#: .\templates\questionpage.html:21
+msgid "on-Diagram"
+msgstr ""
+
+#: .\templates\questionpage.html:52
+msgid "Question"
+msgstr ""
+
+#: .\templates\questionpage.html:68
+msgid "Submit"
+msgstr ""
