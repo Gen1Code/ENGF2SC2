@@ -63,7 +63,7 @@ def checkAnswer(request):
       Question = form.cleaned_data["Question"]
       Difficulty = form.cleaned_data["Difficulty"]
       Type = int(form.cleaned_data["Type"])
-      Answer = form.cleaned_data["Answer"]
+      Answer = form.cleaned_data["Answer"].upper()
 
       if correctAnswer(Question,Difficulty,Type,Answer):
         return {"Result":True}

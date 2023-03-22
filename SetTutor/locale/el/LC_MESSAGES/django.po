@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 19:07+0000\n"
+"POT-Creation-Date: 2023-03-22 11:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\templates\CreateQuestion.html:32 .\templates\questionpage.html:50
+#: .\forms.py:6
+msgid "Easy"
+msgstr ""
+
+#: .\forms.py:7
+msgid "Meduim"
+msgstr ""
+
+#: .\forms.py:8
+msgid "Hard"
+msgstr ""
+
+#: .\forms.py:12
+msgid "Simplify"
+msgstr ""
+
+#: .\forms.py:13
+msgid "Diagram"
+msgstr ""
+
+#: .\forms.py:17 .\templates\questionpage.html:55
+msgid "Question"
+msgstr ""
+
+#: .\forms.py:18
+msgid "Difficulty"
+msgstr ""
+
+#: .\forms.py:19
+msgid "Type"
+msgstr ""
+
+#: .\templates\CreateQuestion.html:32 .\templates\questionpage.html:53
 msgid "Home Page"
 msgstr "Αρχική Σελίδα"
+
+#: .\templates\CreateQuestion.html:42 .\templates\questionpage.html:68
+msgid "Submit"
+msgstr ""
 
 #: .\templates\HomePage.html:5
 msgid "Set Calculator"
@@ -34,22 +70,26 @@ msgstr ""
 msgid "Create Questions"
 msgstr ""
 
-#: .\templates\questionpage.html:14
-msgid "Simplify"
+#: .\templates\questionpage.html:13
+msgid "SimplifyPrompt"
 msgstr ""
 
-#: .\templates\questionpage.html:21
+#: .\templates\questionpage.html:20
 msgid "Shade"
 msgstr ""
 
-#: .\templates\questionpage.html:21
+#: .\templates\questionpage.html:20
 msgid "on-Diagram"
 msgstr ""
 
-#: .\templates\questionpage.html:52
-msgid "Question"
+#: .\templates\questionpage.html:40
+msgid "Correct Answer"
 msgstr ""
 
-#: .\templates\questionpage.html:68
-msgid "Submit"
+#: .\templates\questionpage.html:43
+msgid "Wrong Answer"
+msgstr ""
+
+#: .\templates\questionpage.html:58
+msgid "Next Question"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 19:07+0000\n"
+"POT-Creation-Date: 2023-03-22 11:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,38 +18,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\templates\CreateQuestion.html:32 .\templates\questionpage.html:50
+#: .\forms.py:6
+msgid "Easy"
+msgstr "Easy"
+
+#: .\forms.py:7
+msgid "Meduim"
+msgstr "Meduim"
+
+#: .\forms.py:8
+msgid "Hard"
+msgstr "Hard"
+
+#: .\forms.py:12
+msgid "Simplify"
+msgstr "Simplify"
+
+#: .\forms.py:13
+msgid "Diagram"
+msgstr "Diagram"
+
+#: .\forms.py:17 .\templates\questionpage.html:55
+msgid "Question"
+msgstr "Question"
+
+#: .\forms.py:18
+msgid "Difficulty"
+msgstr "Difficulty"
+
+#: .\forms.py:19
+msgid "Type"
+msgstr "Type"
+
+#: .\templates\CreateQuestion.html:32 .\templates\questionpage.html:53
 msgid "Home Page"
-msgstr ""
+msgstr "Home Page"
+
+#: .\templates\CreateQuestion.html:42 .\templates\questionpage.html:68
+msgid "Submit"
+msgstr "Submit"
 
 #: .\templates\HomePage.html:5
 msgid "Set Calculator"
-msgstr ""
+msgstr "Set Calculator"
 
 #: .\templates\HomePage.html:6
 msgid "Questions"
-msgstr ""
+msgstr "Questions"
 
 #: .\templates\HomePage.html:7
 msgid "Create Questions"
-msgstr ""
+msgstr "Create Questions"
 
-#: .\templates\questionpage.html:14
-msgid "Simplify"
-msgstr ""
+#: .\templates\questionpage.html:13
+msgid "SimplifyPrompt"
+msgstr "Write the Simplified Equation for this Diagram"
 
-#: .\templates\questionpage.html:21
+#: .\templates\questionpage.html:20
 msgid "Shade"
-msgstr ""
+msgstr "Shade"
 
-#: .\templates\questionpage.html:21
+#: .\templates\questionpage.html:20
 msgid "on-Diagram"
-msgstr ""
+msgstr "on the Diagram"
 
-#: .\templates\questionpage.html:52
-msgid "Question"
-msgstr ""
+#: .\templates\questionpage.html:40
+msgid "Correct Answer"
+msgstr "Correct Answer"
 
-#: .\templates\questionpage.html:68
-msgid "Submit"
-msgstr ""
+#: .\templates\questionpage.html:43
+msgid "Wrong Answer"
+msgstr "Wrong Answer"
+
+#: .\templates\questionpage.html:58
+msgid "Next Question"
+msgstr "Next Question"

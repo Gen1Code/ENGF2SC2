@@ -1,20 +1,22 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
+
 
 DIFFICULTY_CHOICES = (
-    ("Easy","Easy"),
-    ("Meduim","Meduim"),
-    ("Hard","Hard")
+    ("Easy",_("Easy")),
+    ("Meduim",_("Meduim")),
+    ("Hard",_("Hard"))
 )
 
 TYPE_CHOICES = (
-    (1,"Simplify"),
-    (2,"Diagram")
+    (1,_("Simplify")),
+    (2,_("Diagram"))
 )
 
 class QuestionForm(forms.Form):
-    Question = forms.CharField(label='Question', max_length=512)
-    Difficulty = forms.ChoiceField(label="Difficulty", choices=DIFFICULTY_CHOICES)
-    Type = forms.ChoiceField(label="Type", choices=TYPE_CHOICES,initial=2)
+    Question = forms.CharField(label=_('Question'), max_length=512)
+    Difficulty = forms.ChoiceField(label=_("Difficulty"), choices=DIFFICULTY_CHOICES)
+    Type = forms.ChoiceField(label=_("Type"), choices=TYPE_CHOICES,initial=2)
 
 class AnswerFormReturned(forms.Form):
     Question = forms.CharField(max_length=128)

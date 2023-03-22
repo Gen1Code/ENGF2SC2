@@ -5,13 +5,12 @@
   $(function(){ /* DOM ready */
       if({{Type}} == 1){
           $("#id_Answer").css("display","");
+
           //Show Diagram Q
-
           shadeRegions("{{Question}}");
-
           $("#venn").css("display","");
 
-          $("#questiontext").html("{% trans "Simplify" %}");
+          $("#questiontext").html("{% trans "SimplifyPrompt" %}");
       }else{
           canShadeVenn();
           $("#id_Answer").css("display","none");
@@ -36,9 +35,13 @@
           url: "ajax/checkAnswer",
           data: getAnswer(),
           success: function (response) {
-              // clear the form.
-              console.log(response);
-              $("#answer-form").trigger('reset');
+              if(response.content.Result == true){
+                $("#answer-form").css("display","none");
+                $("#responsetext").html("{% trans "Correct Answer" %}")
+                $("#nextq").css("display","")
+              }else{
+                $("#responsetext").html("{% trans "Wrong Answer" %}")
+              }
           },
           error: function (response) {
               alert(response["responseJSON"]["error"]);
@@ -49,15 +52,12 @@
 {%endblock %} {% block body %}
 <a href="/">{% trans "Home Page"%}</a>
 
-<h1>{% trans "Question" %}</h1>
-
+<h1>{%trans Difficulty %} {% trans "Question" %}</h1>
+<div>
+  <p id="responsetext"></p>
+  <button id="nextq" onclick="location.href='question';" style="display:none">{% trans "Next Question" %}</button>
+</div>
 <p id="questiontext"></p>
-
-<ul>
-  <li>{{Question}}</li>
-  <li>{{Difficulty}}</li>
-  <li>{{Type}}</li>
-</ul>
 
 <form id="answer-form" onsubmit="ajax();return false;">
   {% csrf_token %}
