@@ -12,9 +12,10 @@
 
           $("#questiontext").html("{% trans "SimplifyPrompt" %}");
       }else{
-          canShadeVenn();
           $("#id_Answer").css("display","none");
+
           //Show Diagram (for user input)
+          canShadeVenn();
           $("#venn").css("display","");
 
           $("#questiontext").html("{% trans "Shade" %} {{Question}} {% trans "on-Diagram" %}");
