@@ -9,8 +9,8 @@
           $("#id_Answer").css("display","");
 
           //Show Diagram Q
-          shadeRegions("{{Question}}");
           $("#"+visibleVenn).css("display","");
+          shadeRegions("{{Question}}",visibleVenn);
 
           $("#questiontext").html("{% trans "SimplifyPrompt" %}");
       }else{

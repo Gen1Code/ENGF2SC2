@@ -141,7 +141,7 @@ function getRegions() {
   return "{'" + activeList.join("','") + "'}";
 }
 
-function shadeRegions(set) {
+function shadeRegions(set,vennId) {
   const paths = document.querySelectorAll("path");
   paths.forEach(function (path) {
     path.classList.remove("active");
@@ -154,7 +154,6 @@ function shadeRegions(set) {
     .split(",");
 
   for (i in regionsList) {
-    const matchingElems = document.getElementById(regionsList[i]);
-    matchingElems.classList.add("active");
+    $("#"+vennId).find("#"+regionsList[i]).addClass("active");
   }
 }
