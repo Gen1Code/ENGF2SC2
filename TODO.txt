@@ -1,10 +1,8 @@
 Front End
-Styling
 Insert symbols Input Box
-Language Selection Flags Part
-svg for only AB
+Language Selection Flags Part (Not gonna do)
+Fix Venn Bugs (if you want really)
+Venn rectangle for 3 sets
 
 Back End
-French + Greek .po files
-
 Clean up Code
