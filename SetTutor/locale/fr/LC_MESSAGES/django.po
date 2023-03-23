@@ -23,32 +23,32 @@ msgid "Easy"
 msgstr "Facile"
 
 #: .\forms.py:7
-msgid "Meduim"
-msgstr ""
+msgid "Medium"
+msgstr "Moyen"
 
 #: .\forms.py:8
 msgid "Hard"
-msgstr ""
+msgstr "Difficile"
 
 #: .\forms.py:12
 msgid "Simplify"
-msgstr ""
+msgstr "Simplifier"
 
 #: .\forms.py:13
 msgid "Diagram"
-msgstr ""
+msgstr "Diagramme"
 
 #: .\forms.py:17 .\templates\questionpage.html:55
 msgid "Question"
-msgstr ""
+msgstr "Question"
 
 #: .\forms.py:18
 msgid "Difficulty"
-msgstr "Difficulte"
+msgstr "Difficulté"
 
 #: .\forms.py:19
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: .\templates\CreateQuestion.html:32 .\templates\questionpage.html:53
 msgid "Home Page"
@@ -56,40 +56,40 @@ msgstr "Page D'accueil"
 
 #: .\templates\CreateQuestion.html:42 .\templates\questionpage.html:68
 msgid "Submit"
-msgstr ""
+msgstr "Soumettre"
 
 #: .\templates\HomePage.html:5
 msgid "Set Calculator"
-msgstr "Calculatrice d'ensemble"
+msgstr "Calculatrice D'ensemble"
 
 #: .\templates\HomePage.html:6
 msgid "Questions"
-msgstr ""
+msgstr "Questions"
 
 #: .\templates\HomePage.html:7
 msgid "Create Questions"
-msgstr ""
+msgstr "Créer une Question"
 
 #: .\templates\questionpage.html:13
 msgid "SimplifyPrompt"
-msgstr ""
+msgstr "Écrire une Équation Simplifiée pour ce Diagramme"
 
 #: .\templates\questionpage.html:20
 msgid "Shade"
-msgstr ""
+msgstr "Colorie"
 
 #: .\templates\questionpage.html:20
 msgid "on-Diagram"
-msgstr ""
+msgstr "sur le Diagramme"
 
 #: .\templates\questionpage.html:40
 msgid "Correct Answer"
-msgstr ""
+msgstr "Bonne Reponse"
 
 #: .\templates\questionpage.html:43
 msgid "Wrong Answer"
-msgstr ""
+msgstr "Mauvaise Reponse"
 
 #: .\templates\questionpage.html:58
 msgid "Next Question"
-msgstr ""
+msgstr "Prochaine Question"

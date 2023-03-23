@@ -2,30 +2,53 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 <script>
-  $(function () {
-    /* DOM ready */ $("#id_Type").change(function (e) {
+  var sets = 2;
+  $(function () {/* DOM ready */ 
+
+      var visibleVenn = "venn2";
+      var notVisibleVenn = "venn3";
+      canShadeVenn("venn2"); 
+      canShadeVenn("venn3"); 
+
+      function displayVenn(){
+        $("#"+visibleVenn).css("display", "");
+        $("#"+notVisibleVenn).css("display", "none");
+      }
+
+      $("#id_Type").change(function (e) {
       var selectVal = $("#id_Type option:selected").val();
       if (selectVal == "1") {
-        canShadeVenn("venn2"); //venn2 or venn3
 
         $("#id_Question").css("display", "none");
         $("label[for=id_Question]").css("display", "none");
-        //Show Diagram
-        $("#venn2").css("display", ""); //venn2 or venn3
+        //Show Correct Diagram
+        displayVenn();
       } else {
         $("#id_Question").css("display", "");
         $("label[for=id_Question]").css("display", "");
-        //Hide Diagram
-        $("#venn2").css("display", "none"); //venn2 or venn3
+        
+        //Hide Diagrams
+        $("#venn2").css("display", "none");
+        $("#venn3").css("display", "none");
       }
     });
-  });
 
-  //difficulty attempt
-  $(function () {
     $("#id_Difficulty").change(function (e) {
-      console.log($("#id_Difficulty option:selected").val());
+        if($("#id_Difficulty option:selected").val() == "Easy"){
+            visibleVenn = "venn2";
+            notVisibleVenn = "venn3";
+        }else{
+            visibleVenn = "venn3";
+            notVisibleVenn = "venn2";
+        }
+        if($("#id_Type option:selected").val() == "1"){
+          displayVenn();
+        }
+        console.log($("#id_Difficulty option:selected").val());
+
     });
+
+
   });
 
   function setAnswer() {
@@ -36,112 +59,117 @@
   }
 </script>
 {% endblock%} {% block body %}
-<a href="/">{% trans "Home Page" %}</a>
-<h1></h1>
-<form
-  id="questionform"
-  action="createQuestion"
-  method="post"
-  onsubmit="setAnswer()"
-  novalidate
->
-  {% csrf_token %} {{form}} <input type="submit" value="{% trans "Submit" %}" />
-</form>
+<a href="/" id="home-btn">🏠{% trans "Home Page"%}</a>
+<div id="create-question-container">
+  <h1>Create a question</h1>
+  <form
+    id="questionform"
+    action="createQuestion"
+    method="post"
+    onsubmit="setAnswer()"
+    novalidate
+  >
+    {% csrf_token %} {{form}} <input id="create-question-submit" type="submit"
+    value="{% trans "Submit" %}" />
+  </form>
 
-<svg
-  xmlns:svg="http://www.w3.org/2000/svg"
-  xmlns="http://www.w3.org/2000/svg"
-  version="1.1"
-  width="440"
-  height="320"
-  id="venn2"
-  style="display: none"
->
-  <defs id="defs4" />
-  <g transform="translate(-120,-250)" id="layer1">
-    <text x="150" y="550" font-family="Verdana" font-size="35" fill="blue">
-      A
-    </text>
-    <text x="510" y="550" font-family="Verdana" font-size="35" fill="blue">
+  <svg
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+    width="440"
+    height="320"
+    id="venn2"
+    style="display: none"
+  >
+    <defs id="defs4" />
+    <g transform="translate(-120,-250)" id="layer1">
+      <text x="150" y="550" font-family="Verdana" font-size="35" fill="blue">
+        A
+      </text>
+      <text x="510" y="550" font-family="Verdana" font-size="35" fill="blue">
+        B
+      </text>
+      <path
+        d="m 406,412.36218 c 0,77.31987 -62.68014,140 -140,140 -77.31986,0 -140,-62.68013 -140,-140 0,-77.31986 62.68014,-140 140,-140 77.31986,0 140,62.68014 140,140 z"
+        id="A"
+      />
+      <path
+        d="m 554,412.36218 c 0,77.31987 -62.68014,140 -140,140 -77.31986,0 -140,-62.68013 -140,-140 0,-77.31986 62.68014,-140 140,-140 77.31986,0 140,62.68014 140,140 z"
+        id="B"
+      />
+      <g class="overlap circle-top circle-left circle-right" id="AB">
+        <path
+          d="m 340,292.36218 c -39.62859,24.72433 -66,68.7254 -66,118.875 0,1.1766 0.002,2.3303 0.0312,3.5 19.65735,10.5221 42.11343,16.5 65.96875,16.5 23.85532,0 46.3114,-5.9779 65.96875,-16.5 0.0289,-1.1697 0.0312,-2.3234 0.0312,-3.5 0,-50.1496 -26.37141,-94.15067 -66,-118.875 z"
+        />
+        <path
+          d="m 274,415.28198 c 1.19491,48.69086 27.26477,91.19629 65.96875,115.34375 38.70398,-24.14746 64.77384,-66.65289 65.96875,-115.34375"
+        />
+      </g>
+    </g>
+  </svg>
+
+  <svg
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+    width="440"
+    height="410"
+    id="venn3"
+    style="display: none"
+  >
+    <text
+      x="85"
+      y="50"
+      font-family="Verdana"
+      font-size="35"
+      fill="blue"
+      text-anchor="middle"
+    >
       B
     </text>
-    <path
-      d="m 406,412.36218 c 0,77.31987 -62.68014,140 -140,140 -77.31986,0 -140,-62.68013 -140,-140 0,-77.31986 62.68014,-140 140,-140 77.31986,0 140,62.68014 140,140 z"
-      id="A"
-    />
-    <path
-      d="m 554,412.36218 c 0,77.31987 -62.68014,140 -140,140 -77.31986,0 -140,-62.68013 -140,-140 0,-77.31986 62.68014,-140 140,-140 77.31986,0 140,62.68014 140,140 z"
-      id="B"
-    />
-    <g class="overlap circle-top circle-left circle-right" id="AB">
+    <text x="20" y="390" font-family="Verdana" font-size="35" fill="blue">
+      A
+    </text>
+    <text x="400" y="390" font-family="Verdana" font-size="35" fill="blue">
+      C
+    </text>
+    <defs id="defs4" />
+    <g transform="translate(-125.5,-151.86218)" id="layer1">
+      <path
+        d="m 480,292.36218 c 0,77.31987 -62.68014,140 -140,140 -77.31986,0 -140,-62.68013 -140,-140 0,-77.31986 62.68014,-140 140,-140 77.31986,0 140,62.68014 140,140 z"
+        id="B"
+      />
+      <path
+        d="m 406,412.36218 c 0,77.31987 -62.68014,140 -140,140 -77.31986,0 -140,-62.68013 -140,-140 0,-77.31986 62.68014,-140 140,-140 77.31986,0 140,62.68014 140,140 z"
+        id="A"
+      />
+      <path
+        d="m 554,412.36218 c 0,77.31987 -62.68014,140 -140,140 -77.31986,0 -140,-62.68013 -140,-140 0,-77.31986 62.68014,-140 140,-140 77.31986,0 140,62.68014 140,140 z"
+        id="C"
+      />
       <path
         d="m 340,292.36218 c -39.62859,24.72433 -66,68.7254 -66,118.875 0,1.1766 0.002,2.3303 0.0312,3.5 19.65735,10.5221 42.11343,16.5 65.96875,16.5 23.85532,0 46.3114,-5.9779 65.96875,-16.5 0.0289,-1.1697 0.0312,-2.3234 0.0312,-3.5 0,-50.1496 -26.37141,-94.15067 -66,-118.875 z"
+        class="overlap circle-top circle-left circle-right"
+        id="ABC"
       />
       <path
-        d="m 274,415.28198 c 1.19491,48.69086 27.26477,91.19629 65.96875,115.34375 38.70398,-24.14746 64.77384,-66.65289 65.96875,-115.34375"
+        d="m 266.25003,271.46933 c -23.85532,0 -46.3114,5.94667 -65.96875,16.46875 -0.0289,1.16993 -0.0312,2.35437 -0.0312,3.53125 0,53.46323 29.97697,99.91736 74.03125,123.5 -0.0289,-1.16966 -0.0312,-2.32339 -0.0312,-3.5 0,-50.14004 26.35267,-94.14806 65.96875,-118.875 -21.46249,-13.38134 -46.81378,-21.125 -73.96875,-21.125 z"
+        class="overlap circle-top circle-left"
+        id="AB"
+      />
+      <path
+        d="m 413.7005,271.90228 c 23.85532,0 46.3114,5.94667 65.96875,16.46875 0.0289,1.16993 0.0312,2.35437 0.0312,3.53125 0,53.46323 -29.97697,99.91736 -74.03125,123.5 0.0289,-1.16966 0.0312,-2.32339 0.0312,-3.5 0,-50.14004 -26.35267,-94.14806 -65.96875,-118.875 21.46249,-13.38134 46.81378,-21.125 73.96875,-21.125 z"
+        class="overlap circle-right circle-top"
+        id="BC"
+      />
+      <path
+        d="m 274,415.28198 c 1.19491,48.69086 27.26477,91.19629 65.96875,115.34375 38.70398,-24.14746 64.77384,-66.65289 65.96875,-115.34375 -19.65735,10.52208 -42.11343,16.5 -65.96875,16.5 -23.85532,0 -46.3114,-5.97792 -65.96875,-16.5 z"
+        class="overlap circle-right circle-left"
+        id="AC"
       />
     </g>
-  </g>
-</svg>
-
-<svg
-  xmlns:svg="http://www.w3.org/2000/svg"
-  xmlns="http://www.w3.org/2000/svg"
-  version="1.1"
-  width="440"
-  height="410"
-  id="venn3"
-  style="display: none"
->
-  <text
-    x="85"
-    y="50"
-    font-family="Verdana"
-    font-size="35"
-    fill="blue"
-    text-anchor="middle"
-  >
-    B
-  </text>
-  <text x="20" y="390" font-family="Verdana" font-size="35" fill="blue">A</text>
-  <text x="400" y="390" font-family="Verdana" font-size="35" fill="blue">
-    C
-  </text>
-  <defs id="defs4" />
-  <g transform="translate(-125.5,-151.86218)" id="layer1">
-    <path
-      d="m 480,292.36218 c 0,77.31987 -62.68014,140 -140,140 -77.31986,0 -140,-62.68013 -140,-140 0,-77.31986 62.68014,-140 140,-140 77.31986,0 140,62.68014 140,140 z"
-      id="B"
-    />
-    <path
-      d="m 406,412.36218 c 0,77.31987 -62.68014,140 -140,140 -77.31986,0 -140,-62.68013 -140,-140 0,-77.31986 62.68014,-140 140,-140 77.31986,0 140,62.68014 140,140 z"
-      id="A"
-    />
-    <path
-      d="m 554,412.36218 c 0,77.31987 -62.68014,140 -140,140 -77.31986,0 -140,-62.68013 -140,-140 0,-77.31986 62.68014,-140 140,-140 77.31986,0 140,62.68014 140,140 z"
-      id="C"
-    />
-    <path
-      d="m 340,292.36218 c -39.62859,24.72433 -66,68.7254 -66,118.875 0,1.1766 0.002,2.3303 0.0312,3.5 19.65735,10.5221 42.11343,16.5 65.96875,16.5 23.85532,0 46.3114,-5.9779 65.96875,-16.5 0.0289,-1.1697 0.0312,-2.3234 0.0312,-3.5 0,-50.1496 -26.37141,-94.15067 -66,-118.875 z"
-      class="overlap circle-top circle-left circle-right"
-      id="ABC"
-    />
-    <path
-      d="m 266.25003,271.46933 c -23.85532,0 -46.3114,5.94667 -65.96875,16.46875 -0.0289,1.16993 -0.0312,2.35437 -0.0312,3.53125 0,53.46323 29.97697,99.91736 74.03125,123.5 -0.0289,-1.16966 -0.0312,-2.32339 -0.0312,-3.5 0,-50.14004 26.35267,-94.14806 65.96875,-118.875 -21.46249,-13.38134 -46.81378,-21.125 -73.96875,-21.125 z"
-      class="overlap circle-top circle-left"
-      id="AB"
-    />
-    <path
-      d="m 413.7005,271.90228 c 23.85532,0 46.3114,5.94667 65.96875,16.46875 0.0289,1.16993 0.0312,2.35437 0.0312,3.53125 0,53.46323 -29.97697,99.91736 -74.03125,123.5 0.0289,-1.16966 0.0312,-2.32339 0.0312,-3.5 0,-50.14004 -26.35267,-94.14806 -65.96875,-118.875 21.46249,-13.38134 46.81378,-21.125 73.96875,-21.125 z"
-      class="overlap circle-right circle-top"
-      id="BC"
-    />
-    <path
-      d="m 274,415.28198 c 1.19491,48.69086 27.26477,91.19629 65.96875,115.34375 38.70398,-24.14746 64.77384,-66.65289 65.96875,-115.34375 -19.65735,10.52208 -42.11343,16.5 -65.96875,16.5 -23.85532,0 -46.3114,-5.97792 -65.96875,-16.5 z"
-      class="overlap circle-right circle-left"
-      id="AC"
-    />
-  </g>
-</svg>
+  </svg>
+</div>
 
 {%endblock%}

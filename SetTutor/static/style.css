@@ -65,11 +65,6 @@
   }
 }
 
-#select-language {
-  padding-left: 10px;
-  padding-top: 10px;
-}
-
 #B {
   stroke: #777;
   stroke-width: 3;
@@ -158,7 +153,7 @@
 }
 
 #questiontitle {
-  font-family: DINNextRoundedLTW01-Regular, Verdana, sans-serif;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
 }
 
 @import url(//db.onlinewebfonts.com/c/ab596f21664c5582567537d241e2a53e?family=DINNextRoundedLTW01-Regular);
@@ -167,20 +162,204 @@
   background-color: #dddddd53;
   padding: 15px;
   font-size: 35px;
-  font-family: DINNextRoundedLTW01-Regular, Verdana, sans-serif;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
 
   font-weight: bolder;
 }
 
-#questionsubmit {
-  background-color: #5a5a5a; /* Green */
+#correcttext {
+  font-size: 30px;
+  color: #1bca1a;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+  margin-left: 15px;
+}
+
+#wrongtext {
+  font-size: 30px;
+  color: #f81515;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+  margin-left: 15px;
+}
+
+#answer-form {
+  display: flex;
+}
+
+#nextq {
+  background-color: #4caf50;
   border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 25px;
+}
+
+#id_Answer {
+  color: black;
+  padding: 12.5px 3.3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: bold;
+  border: 2.5px solid #acacac;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+}
+
+#questionsubmit {
+  background-color: #5a5a5a;
+  border: none;
+  color: white;
+  padding: 15px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+}
+
+#questionsubmit:hover {
+  background-color: #919191; /* Green */
+}
+
+#home-btn {
+  margin-left: 10px;
+  color: black;
+  /* padding: 12.5px 3.3px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 30px; */
+  font-weight: bold;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+}
+
+#home-btn:hover {
+  background-color: #ffa19c;
+}
+
+#select-language {
+  padding-left: 10px;
+  padding-top: 10px;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+#language-dropdown {
+  color: black;
+  /* padding: 12.5px 3.3px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 30px; */
+  font-weight: bold;
+  border: 2.5px solid #acacac;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+}
+
+#submit-language {
+  background-color: #5a5a5a;
+  border: none;
+  color: white;
+  /* padding: 15px 34px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 20px; */
+  font-weight: bold;
+  cursor: pointer;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+}
+
+#symbols {
+  display: flex;
+}
+
+.symbol-btn {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  background-color: #5a5a5a;
+  border: none;
+  color: white;
+  padding: 15px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+}
+
+.symbol-btn:hover {
+  background-color: #919191; /* Green */
+}
+
+#id_Difficulty {
+  color: black;
+  padding: 12.5px 3.3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2.5px solid #acacac;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+}
+
+#id_Question {
+  color: black;
+  padding: 12.5px 3.3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2.5px solid #acacac;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+}
+
+#id_Type {
+  color: black;
+  padding: 12.5px 3.3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2.5px solid #acacac;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
+}
+
+#create-question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+#questionform {
+  background-color: #acacac;
+  padding: 20px;
+  font-size: 20px;
+}
+
+#create-question-submit {
+  background-color: #4bcb66;
+  border: none;
+  color: white;
+  padding: 15px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: DINNextRoundedLTW01-Regular, sans-serif;
 }

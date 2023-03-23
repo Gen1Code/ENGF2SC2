@@ -2,7 +2,6 @@ import random
 import unittest
 import re
 
-
 class Set:
 
     def __init__(self, difficulty):

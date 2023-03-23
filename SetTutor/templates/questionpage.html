@@ -4,21 +4,23 @@
 
   $(function(){ /* DOM ready */
 
+      var visibleVenn = "venn" + (2 + ("{{Difficulty}}" != "Easy"));
       if({{Type}} == 1){
           $("#id_Answer").css("display","");
 
           //Show Diagram Q
           shadeRegions("{{Question}}");
-          $("#venn2").css("display",""); //venn2 or venn3
+          $("#"+visibleVenn).css("display","");
 
           $("#questiontext").html("{% trans "SimplifyPrompt" %}");
       }else{
           $("#id_Answer").css("display","none");
+          $("#symbols").css("display","none");
+
 
           //Show Diagram (for user input)
-
-          canShadeVenn("venn2"); //venn2 or venn3
-          $("#venn2").css("display",""); //venn2 or venn3
+          canShadeVenn(visibleVenn); 
+          $("#"+visibleVenn).css("display","");
 
           $("#questiontext").html("{% trans "Shade" %} {{Question}} {% trans "on-Diagram" %}");
       }
@@ -40,10 +42,11 @@
           success: function (response) {
               if(response.content.Result == true){
                 $("#answer-form").css("display","none");
-                $("#responsetext").html("{% trans "Correct Answer" %}")
+                $("#wrongtext").css("display","none")
+                $("#correcttext").html("{% trans "Correct Answer" %}")
                 $("#nextq").css("display","")
               }else{
-                $("#responsetext").html("{% trans "Wrong Answer" %}")
+                $("#wrongtext").html("{% trans "Wrong Answer" %}")
               }
           },
           error: function (response) {
@@ -53,20 +56,10 @@
   }
 </script>
 {%endblock %} {% block body %}
-<a href="/">{% trans "Home Page"%}</a>
+<a href="/" id="home-btn">🏠{% trans "Home Page"%}</a>
 
 <div id="questioncontainer">
   <h1 id="questiontitle">{%trans Difficulty %} {% trans "Question" %}</h1>
-  <div>
-    <p id="responsetext"></p>
-    <button
-      id="nextq"
-      onclick="location.href='question';"
-      style="display: none"
-    >
-      {% trans "Next Question" %}
-    </button>
-  </div>
   <p id="questiontext"></p>
 
   <svg
@@ -175,6 +168,22 @@
     <input type="text" name="Answer" id="id_Answer" />
     <input type="submit" value="{% trans "Submit" %}" id="questionsubmit"/>
   </form>
+  <div>
+    <p id="correcttext"></p>
+    <p id="wrongtext"></p>
+    <button
+      id="nextq"
+      onclick="location.href='question';"
+      style="display: none"
+    >
+      {% trans "Next Question" %}
+    </button>
+  </div>
+  <div id="symbols">
+    <button class="symbol-btn">∪</button>
+    <button class="symbol-btn">∩</button>
+    <button class="symbol-btn">Δ</button>
+  </div>
 </div>
 
 {% endblock %}

@@ -128,7 +128,7 @@ function getRegions() {
   const activeList = [];
   for (i in active) {
     if (active[i].id) {
-      if (active[i].id == "venn") {
+      if (active[i].id == "venn2" || active[i].id == "venn3") {
         activeList.push("");
       } else {
         activeList.push(active[i].id);

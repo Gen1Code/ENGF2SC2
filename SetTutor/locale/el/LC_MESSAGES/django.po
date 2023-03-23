@@ -23,6 +23,7 @@ msgid "Easy"
 msgstr "Εύκολο"
 
 #: .\forms.py:7
+
 msgid "Meduim"
 msgstr "Μεσαίο"
 
