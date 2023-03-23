@@ -118,6 +118,14 @@
   padding: 10px; */
 }
 
+#venn2 {
+  border: 1px solid black;
+  margin: 10px;
+  /* min-width: 450px;
+  min-height: 450px;
+  padding: 10px; */
+}
+
 .active {
   fill: #f7473e !important;
   background-color: #f7473e !important;
@@ -140,5 +148,39 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  cursor: pointer;
+}
+
+#questioncontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#questiontitle {
+  font-family: DINNextRoundedLTW01-Regular, Verdana, sans-serif;
+}
+
+@import url(//db.onlinewebfonts.com/c/ab596f21664c5582567537d241e2a53e?family=DINNextRoundedLTW01-Regular);
+
+#questiontext {
+  background-color: #dddddd53;
+  padding: 15px;
+  font-size: 35px;
+  font-family: DINNextRoundedLTW01-Regular, Verdana, sans-serif;
+
+  font-weight: bolder;
+}
+
+#questionsubmit {
+  background-color: #5a5a5a; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
 }
