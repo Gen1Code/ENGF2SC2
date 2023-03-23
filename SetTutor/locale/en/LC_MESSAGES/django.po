@@ -23,8 +23,8 @@ msgid "Easy"
 msgstr "Easy"
 
 #: .\forms.py:7
-msgid "Meduim"
-msgstr "Meduim"
+msgid "Medium"
+msgstr "Medium"
 
 #: .\forms.py:8
 msgid "Hard"
