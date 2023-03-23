@@ -1,6 +1,19 @@
-const venn = document.getElementById("venn");
+// const venn2 = document.getElementById("venn2");
 
-function canShadeVenn() {
+function canShadeVenn(vennid) {
+  const venn = document.getElementById(vennid);
+
+  const twoset = document.getElementById("AB");
+  twoset.addEventListener("click", function (event) {
+    var classes = twoset.classList;
+    var classesList = Array.from([...classes]);
+    console.log("ABSs");
+    if (classesList.includes("active")) {
+      twoset.classList.remove("active");
+    } else {
+      twoset.classList.add("active");
+    }
+  });
   venn.addEventListener("click", function (event) {
     // Remove active class from all paths
     //   const paths = this.querySelectorAll('path');
@@ -24,6 +37,17 @@ function canShadeVenn() {
       event.target.classList.add("active");
     }
 
+    // if (svgId == "ABC" || svgId == "AC") {
+    //   console.log("spedialcase");
+    //   const svgId2 = svgId == "ABC" ? "AC" : "ABC";
+    //   const matchingElems = document.querySelectorAll("." + svgId2);
+    //   console.log(matchingElems);
+
+    //   var classes = event.target.classList;
+    //   var classesList = Array.from([...classes]);
+    //   event.target.classList.add("active");
+    // }
+
     // matchingElems.forEach(function (elem) {
     //   if (elem.className == "active") {
     //     elem.classList.remove("active");
@@ -34,6 +58,50 @@ function canShadeVenn() {
 
     // Add active class to clicked element
   });
+  // venn2.addEventListener("click", function (event) {
+  //   // Remove active class from all paths
+  //   //   const paths = this.querySelectorAll('path');
+  //   //   paths.forEach(function(path) {
+  //   //     path.classList.remove('active');
+  //   //   });
+  //   // const paths = this.querySelectorAll("path");
+  //   // paths.forEach(function (path) {
+  //   //   path.classList.remove("highlight");
+  //   // });
+  //   // Add active class to matching elements
+  //   const svgId = event.target.getAttribute("id");
+  //   console.log(svgId);
+  //   const matchingElems = document.querySelectorAll("." + svgId);
+
+  //   var classes = event.target.classList;
+  //   var classesList = Array.from([...classes]);
+  //   if (classesList.includes("active")) {
+  //     event.target.classList.remove("active");
+  //   } else {
+  //     event.target.classList.add("active");
+  //   }
+
+  //   // if (svgId == "ABC" || svgId == "AC") {
+  //   //   console.log("spedialcase");
+  //   //   const svgId2 = svgId == "ABC" ? "AC" : "ABC";
+  //   //   const matchingElems = document.querySelectorAll("." + svgId2);
+  //   //   console.log(matchingElems);
+
+  //   //   var classes = event.target.classList;
+  //   //   var classesList = Array.from([...classes]);
+  //   //   event.target.classList.add("active");
+  //   // }
+
+  //   // matchingElems.forEach(function (elem) {
+  //   //   if (elem.className == "active") {
+  //   //     elem.classList.remove("active");
+  //   //   } else {
+  //   //     elem.classList.add("active");
+  //   //   }
+  //   // });
+
+  //   // Add active class to clicked element
+  // });
 }
 
 // venn.addEventListener("mouseover", function (event) {
