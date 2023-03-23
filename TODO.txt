@@ -6,3 +6,5 @@ Venn rectangle for 3 sets
 
 Back End
 Clean up Code
+Replace before regex
+Symmetric difference
