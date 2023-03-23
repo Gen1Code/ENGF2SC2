@@ -4,14 +4,13 @@
 
   $(function(){ /* DOM ready */
 
-    
-
+      var visibleVenn = "venn" + (2 + ("{{Difficulty}}" != "Easy"));
       if({{Type}} == 1){
           $("#id_Answer").css("display","");
 
           //Show Diagram Q
           shadeRegions("{{Question}}");
-          $("#venn2").css("display",""); //venn2 or venn3
+          $("#"+visibleVenn).css("display","");
 
           $("#questiontext").html("{% trans "SimplifyPrompt" %}");
       }else{
@@ -20,9 +19,8 @@
 
 
           //Show Diagram (for user input)
-
-          canShadeVenn("venn2"); //venn2 or venn3
-          $("#venn2").css("display",""); //venn2 or venn3
+          canShadeVenn(visibleVenn); 
+          $("#"+visibleVenn).css("display","");
 
           $("#questiontext").html("{% trans "Shade" %} {{Question}} {% trans "on-Diagram" %}");
       }

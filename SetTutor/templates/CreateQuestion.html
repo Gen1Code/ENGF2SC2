@@ -41,7 +41,9 @@
             visibleVenn = "venn3";
             notVisibleVenn = "venn2";
         }
-        displayVenn();
+        if($("#id_Type option:selected").val() == "1"){
+          displayVenn();
+        }
         console.log($("#id_Difficulty option:selected").val());
 
     });
