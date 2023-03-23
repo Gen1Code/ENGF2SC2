@@ -2,7 +2,7 @@
 <form action="setlanguage" method="post" id="select-language">
     {% csrf_token %}
     <input name="next" type="hidden" value="{{ request.path }}" />
-    <select name="Language">
+    <select name="Language" id="language-dropdown">
         {% get_current_language as LANGUAGE_CODE %}
         {% get_available_languages as LANGUAGES %}
         {% get_language_info_list for LANGUAGES as languages %}
@@ -12,5 +12,5 @@
             </option>
         {% endfor %}
     </select>
-    <input type="submit" value="Change" />
+    <input type="submit" value="Change" id="submit-language"/>
 </form>
