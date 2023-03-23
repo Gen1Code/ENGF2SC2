@@ -1,7 +1,7 @@
 Front End
 Insert symbols Input Box
 Language Selection Flags Part (Not gonna do)
-Fix Venn Bugs (if you want really)
+Fix Venn Drag Bug (if you want really)
 Venn rectangle for 3 sets
 
 Back End
