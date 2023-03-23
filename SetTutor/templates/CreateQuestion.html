@@ -2,30 +2,51 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 <script>
-  $(function () {
-    /* DOM ready */ $("#id_Type").change(function (e) {
+  var sets = 2;
+  $(function () {/* DOM ready */ 
+
+      var visibleVenn = "venn2";
+      var notVisibleVenn = "venn3";
+      canShadeVenn("venn2"); 
+      canShadeVenn("venn3"); 
+
+      function displayVenn(){
+        $("#"+visibleVenn).css("display", "");
+        $("#"+notVisibleVenn).css("display", "none");
+      }
+
+      $("#id_Type").change(function (e) {
       var selectVal = $("#id_Type option:selected").val();
       if (selectVal == "1") {
-        canShadeVenn("venn2"); //venn2 or venn3
 
         $("#id_Question").css("display", "none");
         $("label[for=id_Question]").css("display", "none");
-        //Show Diagram
-        $("#venn2").css("display", ""); //venn2 or venn3
+        //Show Correct Diagram
+        displayVenn();
       } else {
         $("#id_Question").css("display", "");
         $("label[for=id_Question]").css("display", "");
-        //Hide Diagram
-        $("#venn2").css("display", "none"); //venn2 or venn3
+        
+        //Hide Diagrams
+        $("#venn2").css("display", "none");
+        $("#venn3").css("display", "none");
       }
     });
-  });
 
-  //difficulty attempt
-  $(function () {
     $("#id_Difficulty").change(function (e) {
-      console.log($("#id_Difficulty option:selected").val());
+        if($("#id_Difficulty option:selected").val() == "Easy"){
+            visibleVenn = "venn2";
+            notVisibleVenn = "venn3";
+        }else{
+            visibleVenn = "venn3";
+            notVisibleVenn = "venn2";
+        }
+        displayVenn();
+        console.log($("#id_Difficulty option:selected").val());
+
     });
+
+
   });
 
   function setAnswer() {
