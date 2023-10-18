@@ -7,7 +7,7 @@ Where Easy can only have 2 sets, while Medium and Hard have 3 sets
 There are 2 types of questions: 
 Shading in a Venn diagram
   
-![image](https://github.com/Gen1Code/ENGF2SC2/assets/72555054/f70bf57f-f7d3-4974-a124-e0452cfec506|width=100|height=100)
+![image|50x50](https://github.com/Gen1Code/ENGF2SC2/assets/72555054/f70bf57f-f7d3-4974-a124-e0452cfec506)
 
 Formula based
 ![image](https://github.com/Gen1Code/ENGF2SC2/assets/72555054/dd5d825f-9e29-4b1d-b600-1ec0772cf23e)
