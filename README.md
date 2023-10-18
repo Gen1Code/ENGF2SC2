@@ -9,6 +9,10 @@ Shading in a Venn diagram
 
 Formula based
 ![image](https://github.com/Gen1Code/ENGF2SC2/assets/72555054/d6480a60-ca6a-40dc-9e23-cd971814c881)
+![image](https://github.com/Gen1Code/ENGF2SC2/assets/72555054/2f8b44c8-62ce-4522-8019-2d4fcfc33c78)
+![image](https://github.com/Gen1Code/ENGF2SC2/assets/72555054/dd5d825f-9e29-4b1d-b600-1ec0772cf23e)
+![image](https://github.com/Gen1Code/ENGF2SC2/assets/72555054/f70bf57f-f7d3-4974-a124-e0452cfec506)
+![image](https://github.com/Gen1Code/ENGF2SC2/assets/72555054/767b5c48-f78b-4ba1-b11f-559c0dffc933)
 
 
 Users can then answer these questions:
