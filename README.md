@@ -13,6 +13,11 @@ Formula based
 Users can then answer these questions:
 
 
+There is also a language system, where users can change the language of the website to their liking.
+The choices are:
+English
+French
+Greek
 
 Made by:
 @Gen1Code
