@@ -8,6 +8,7 @@ There are 2 types of questions:
 Shading in a Venn diagram
 
 Formula based
+![image](https://github.com/Gen1Code/ENGF2SC2/assets/72555054/d6480a60-ca6a-40dc-9e23-cd971814c881)
 
 
 Users can then answer these questions:
